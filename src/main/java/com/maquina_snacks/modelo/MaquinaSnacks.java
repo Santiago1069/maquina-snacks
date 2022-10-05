@@ -32,9 +32,22 @@ public class MaquinaSnacks {
 
 
     public Producto sacarProducto(String seccion){
-        // debe existir
-        //
+
+        // preguntar si productos en la seccion
+        if (productos.containsKey(seccion)){
+
+            List<Producto> listaProductos = productos.get(seccion);
+
+            if( !listaProductos.isEmpty()){
+                Producto productoParaSacar = listaProductos.get(0);
+                listaProductos.remove(0);
+                return productoParaSacar;
+            }
+        }
         return null;
     }
+
+
+
 
 }

@@ -50,4 +50,30 @@ public class MaquinaSnacksTest {
         assertEquals(2, productosSeccion3.size());
 
     }
+
+
+    @Test
+    public void sacarProductoDeLaMaquina() {
+
+        // arrange (organizar/inicializar)
+        MaquinaSnacks maquina  = new MaquinaSnacks();
+
+        // crea maquina
+        // llenar productos
+        Producto producto1 = new Producto("Papas", 2_000);
+        Producto producto2 = new Producto("Papas", 2_000);
+        maquina.agregarProducto("1", producto1);
+        maquina.agregarProducto("1", producto2);
+
+        // sacar un producto
+        // act (actual)
+        Producto productoSacado =  maquina.sacarProducto("1");
+
+        // assert (verificar)
+        List<Producto> productosSobrantes = maquina.obtenerProductosDesdeSeccion("1");
+        assertEquals("Papas", productoSacado.getNombre());
+        assertEquals(2_000, productoSacado.getValor());
+        assertEquals(1, productosSobrantes.size());
+
+    }
 }
